@@ -11,7 +11,11 @@ public class Main {
          *      size: 0
          * }
          **/
+        vetor .adiciona(10);
+        vetor .adiciona(20);
         System.out.println(vetor);
+
+
 
     }
 }

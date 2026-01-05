@@ -48,3 +48,18 @@ public class Vetor {
 }
 
 // Métodos para adicionar, buscar, remover, etc. serão implementados aqui...
+
+public boolean adiciona(Integer elemento) {
+    // Verifica se ainda há espaço no array ' elementos' .
+    if (this.tamanho < this.elementos.length) {
+        // Adiciona o 'elemento' na proxima posição disponivel.
+        this.elementos[this.tamanho] = elemento;
+        // Incrementa o contador de elementos.
+        this. tamanho++;
+        // Indica que a adição foi bem-sucedida.
+        return  true;
+    }
+    // indica que a adição falhou (array cheio).
+    return false;
+    }
+}
