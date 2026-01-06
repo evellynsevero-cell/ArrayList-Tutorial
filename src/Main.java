@@ -15,6 +15,15 @@ public class Main {
         vetor .adiciona(20);
         System.out.println(vetor);
 
+        // Exibe o tamanho atual do vetor
+        System.out.println("Tamanho atual: " + vetor.tamanho());
+
+        // Busca e exibe o item na posição 0
+        System.out.println("Item na posição 0: " + vetor.busca(0));
+
+        // Busca e exibe a posição da primeira ocorrencia do elelmento "Eelemento 2"
+        System.out.println("Posição do Elemento 2: " + vetor.busca("Elemento 2"));
+
 
 
     }
