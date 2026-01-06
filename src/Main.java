@@ -24,6 +24,9 @@ public class Main {
         // Busca e exibe a posição da primeira ocorrencia do elelmento "Eelemento 2"
         System.out.println("Posição do Elemento 2: " + vetor.busca("Elemento 2"));
 
+        vetor.remove(0); // Essa linha remove o elemento na posição de índice 0 (o primeiro elemento) do 'vetor'. Os elementos são deslocados para preeencher o espaço.
+        System.out.println(vetor); // Imprime o conteúdo atualizado da estrutura 'vetor' no console.
+
 
 
     }

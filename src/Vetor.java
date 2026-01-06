@@ -89,3 +89,19 @@ public int busca(Integer elemento) {
     // Não encontrado
     return -1;
 }
+public void remove(int posicao) {
+    // 1. Validação da posição:
+    // Verifica se a posição está dentro dos limites válidos (0 até tamanho -1).
+    if (!(posicao >= 0 && posicao < tamanho)) {
+        throw new IllegalArgumentException("Posição inválida");
+    }
+    // 2. Deslocamento dos Eelementos:
+    // Move os elementos á direita da posição a ser removida uma posição para a esquerda.
+    for (int i = posicao; i < this.tamanho -1; i++) {
+        this.elementos[i + 1];
+    }
+
+    // 3. Atualização do Tamanho:
+    // Decrementa o contador de itens da lista.
+    this.tamanho--;
+}
