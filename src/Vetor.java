@@ -105,3 +105,20 @@ public void remove(int posicao) {
     // Decrementa o contador de itens da lista.
     this.tamanho--;
 }
+
+public boolean adiciona(int posicao, Integer elemento) {
+    if (posicao < 0 || posicao >= tamanho) {
+        throw new IllegalArgumentException("Posição inválida");
+    }
+// Desloca os elementos existentes uma posição para a direita
+    a partir da 'posicao'
+    for (int i = this.tamanho - 1; i >= posicao; i--) {
+        this.elementos[i + 1] = this.elementos[i];
+    }
+    // Insere o novo elemento e atualiza o tamanho
+    this.elementos[posicao] = elemento;
+    this.tamanho++;
+    return true;
+}
+
+
