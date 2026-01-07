@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Vetor {
+    public class Vetor {
     private Integer[] elementos; // Array interno para armazenar os dados
     private int tamanho;         // Número atual de elementos inseridos
 
