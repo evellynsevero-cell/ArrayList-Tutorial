@@ -1,25 +1,15 @@
 import java.util.Arrays;
 
-/**
- * Representa uma estrutura de dados de vetor (array)
- * que armazena elementos do tipo Integer.
- */
 public class Vetor {
     private Integer[] elementos; // Array interno para armazenar os dados
     private int tamanho;         // Número atual de elementos inseridos
 
-    /**
-     * Construtor da classe Vetor.
-     * @param capacidade O número máximo inicial de elementos que o vetor pode armazenar.
-     */
+
     public Vetor(int capacidade) {
         this.elementos = new Integer[capacidade];
         this.tamanho = 0;
     }
 
-    /**
-     * Retorna uma representação em String da estrutura.
-     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -38,7 +28,6 @@ public class Vetor {
         return sb.toString();
     }
 
-    // Adiciona elemento ao final do vetor
     public boolean adiciona(Integer elemento) {
         if (this.tamanho < this.elementos.length) {
             this.elementos[this.tamanho] = elemento;
@@ -48,7 +37,6 @@ public class Vetor {
         return false;
     }
 
-    // Adiciona elemento em uma posição específica
     public boolean adiciona(int posicao, Integer elemento) {
         if (posicao < 0 || posicao > tamanho || tamanho == elementos.length) {
             throw new IllegalArgumentException("Posição inválida");
@@ -61,14 +49,10 @@ public class Vetor {
         return true;
     }
 
-    // Retorna o número total de itens armazenados
     public int tamanho() {
         return this.tamanho;
     }
 
-    /**
-     * Busca um elemento pela sua posição (índice).
-     */
     public Integer busca(int posicao) {
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida.");
@@ -76,9 +60,6 @@ public class Vetor {
         return this.elementos[posicao];
     }
 
-    /**
-     * Busca a primeira ocorrência de um elemento e retorna sua posição (índice).
-     */
     public int busca(Integer elemento) {
         for (int i = 0; i < this.tamanho; i++) {
             if (this.elementos[i].equals(elemento)) {
@@ -88,7 +69,6 @@ public class Vetor {
         return -1;
     }
 
-    // Remove o elemento de uma posição específica
     public void remove(int posicao) {
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida");
