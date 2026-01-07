@@ -19,11 +19,6 @@ public class Vetor {
 
     /**
      * Retorna uma representação em String da estrutura.
-     * O formato inclui:
-     * - a lista de elementos inseridos (separados por vírgula),
-     * - a capacidade total do array interno, e
-     * - o tamanho lógico atual.
-     * @return Uma String contendo o estado atual da estrutura.
      */
     @Override
     public String toString() {
@@ -38,13 +33,12 @@ public class Vetor {
         }
         sb.append("]\n");
         sb.append(String.format("\tcapacity: %d\n", elementos.length));
-        sb.append(String.format("\ttsize: %d\n", tamanho));
+        sb.append(String.format("\tsize: %d\n", tamanho));
         sb.append("}");
         return sb.toString();
     }
 
-    // Métodos para adicionar, buscar, remover, etc. serão implementados aqui...
-
+    // Adiciona elemento ao final do vetor
     public boolean adiciona(Integer elemento) {
         if (this.tamanho < this.elementos.length) {
             this.elementos[this.tamanho] = elemento;
@@ -53,72 +47,56 @@ public class Vetor {
         }
         return false;
     }
-}
-// Retorna o número total de itens armazenados
-public int tamanho() {
-    return this.tamanho;
-}
-/**
- *  Busca um elemento pela sua posição (índice).
- *  Exemplo: Qual elemento está na posição 1?
- *
- * @param posicao 0 índice do elemento a ser buscado.
- * @return 0 elemento (String) encontrado na posição.
- * @throws java.lang.IllegalArgumentException Se a posição for inválida
- (fora do intervalo [0, tamanho-1]).
- */
-public Integer busca(int posicao) {
-    if (!(posicao >= 0 &&  posicao < tamanho)) {
-        throw  new IllegalArgumentException("Posição inválida. ");
-    }
-    return this.elementos[posicao];
-}
-/**
- * Busca a primeira ocorrencia de um elemento e retorna sua posição (índice).
- * Exemplo: Em qual posição está o elemento 'Java'?
- *
- * @param elemento 0 conteúdo (String) a ser procurado.
- * @return 0 índice (posição) do elemento, ou -1 se não for encontrado.
- */
-public int busca(Integer elemento) {
-    for (int i = 0; i < this.tamanho; i++) {
-        if (this.elementos[i].equals(elemento)) {
-            return i;
+
+    // Adiciona elemento em uma posição específica
+    public boolean adiciona(int posicao, Integer elemento) {
+        if (posicao < 0 || posicao > tamanho || tamanho == elementos.length) {
+            throw new IllegalArgumentException("Posição inválida");
         }
+        for (int i = this.tamanho - 1; i >= posicao; i--) {
+            this.elementos[i + 1] = this.elementos[i];
+        }
+        this.elementos[posicao] = elemento;
+        this.tamanho++;
+        return true;
     }
-    // Não encontrado
-    return -1;
+
+    // Retorna o número total de itens armazenados
+    public int tamanho() {
+        return this.tamanho;
+    }
+
+    /**
+     * Busca um elemento pela sua posição (índice).
+     */
+    public Integer busca(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("Posição inválida.");
+        }
+        return this.elementos[posicao];
+    }
+
+    /**
+     * Busca a primeira ocorrência de um elemento e retorna sua posição (índice).
+     */
+    public int busca(Integer elemento) {
+        for (int i = 0; i < this.tamanho; i++) {
+            if (this.elementos[i].equals(elemento)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Remove o elemento de uma posição específica
+    public void remove(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("Posição inválida");
+        }
+        for (int i = posicao; i < this.tamanho - 1; i++) {
+            this.elementos[i] = this.elementos[i + 1];
+        }
+        this.elementos[tamanho - 1] = null;
+        this.tamanho--;
+    }
 }
-public void remove(int posicao) {
-    // 1. Validação da posição:
-    // Verifica se a posição está dentro dos limites válidos (0 até tamanho -1).
-    if (!(posicao >= 0 && posicao < tamanho)) {
-        throw new IllegalArgumentException("Posição inválida");
-    }
-    // 2. Deslocamento dos Eelementos:
-    // Move os elementos á direita da posição a ser removida uma posição para a esquerda.
-    for (int i = posicao; i < this.tamanho -1; i++) {
-        this.elementos[i + 1];
-    }
-
-    // 3. Atualização do Tamanho:
-    // Decrementa o contador de itens da lista.
-    this.tamanho--;
-}
-
-public boolean adiciona(int posicao, Integer elemento) {
-    if (posicao < 0 || posicao >= tamanho) {
-        throw new IllegalArgumentException("Posição inválida");
-    }
-// Desloca os elementos existentes uma posição para a direita
-    a partir da 'posicao'
-    for (int i = this.tamanho - 1; i >= posicao; i--) {
-        this.elementos[i + 1] = this.elementos[i];
-    }
-    // Insere o novo elemento e atualiza o tamanho
-    this.elementos[posicao] = elemento;
-    this.tamanho++;
-    return true;
-}
-
-
