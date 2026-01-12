@@ -72,10 +72,13 @@ public class Vetor {
         if (posicao < 0 || posicao > tamanho) {
             throw new IllegalArgumentException("Posição inválida");
         }
+        // for (int i = posicao; i < this.tamanho - 1; i++) {
+        // this.elementos[i] = this.elementos[i + 1];
+
         if (posicao < tamanho - 1) {
             System.arraycopy(elementos, posicao + 1, elementos, posicao, tamanho - posicao - 1);
         }
-        elementos[tamanho - 1] = null;// Limpa a última posição
+        elementos[tamanho - 1] = null;
         tamanho--;
     }
 }
