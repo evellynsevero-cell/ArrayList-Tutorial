@@ -78,7 +78,7 @@ public class Vetor {
         if (posicao < tamanho - 1) {
             System.arraycopy(elementos, posicao + 1, elementos, posicao, tamanho - posicao - 1);
         }
-        elementos[tamanho - 1] = null; ///
+        elementos[tamanho - 1] = null;
         tamanho--;
     }
 }
