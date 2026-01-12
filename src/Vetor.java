@@ -1,9 +1,8 @@
 import java.util.Arrays;
 
-    public class Vetor {
-    private Integer[] elementos; // Array interno para armazenar os dados
-    private int tamanho;         // Número atual de elementos inseridos
-
+public class Vetor {
+    private final Integer[] elementos;
+    private int tamanho;
 
     public Vetor(int capacidade) {
         this.elementos = new Integer[capacidade];
@@ -70,13 +69,13 @@ import java.util.Arrays;
     }
 
     public void remove(int posicao) {
-        if (!(posicao >= 0 && posicao < tamanho)) {
+        if (posicao < 0 || posicao > tamanho) {
             throw new IllegalArgumentException("Posição inválida");
         }
-        for (int i = posicao; i < this.tamanho - 1; i++) {
-            this.elementos[i] = this.elementos[i + 1];
+        if (posicao < tamanho - 1) {
+            System.arraycopy(elementos, posicao + 1, elementos, posicao, tamanho - posicao - 1);
         }
-        this.elementos[tamanho - 1] = null;
-        this.tamanho--;
+        elementos[tamanho - 1] = null;// Limpa a última posição
+        tamanho--;
     }
 }
