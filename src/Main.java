@@ -19,7 +19,7 @@ public class Main {
 
         //vetor.sort(Vetor.SortType.SELECTION);
         //vetor.sort(Vetor.SortType.INSERTION);
-        vetor.sort(Vetor.SortType.BUBBLE); // Corrigido aqui!
+        //vetor.sort(Vetor.SortType.BUBBLE);
 
         System.out.println("Depois: " + vetor);
     }
