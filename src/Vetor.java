@@ -69,15 +69,37 @@ public class Vetor {
     }
 
     public void remove(int posicao) {
-        if (posicao < 0 || posicao > tamanho) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida");
         }
-        // for (int i = posicao; i < this.tamanho - 1; i++) {
-       // this.elementos[1] = this.elementos[ + 1];
+        for (int i = posicao; i < this.tamanho - 1; i++) {
+            this.elementos[i] = this.elementos[i + 1];
+        }
+        this.elementos[tamanho - 1] = null;
         this.tamanho--;
-        this.elementos[posicao] = this.elementos[tamanho];
-        this.elementos[tamanho] = null;
+    }
+
+    public enum SortType {
+        BUBBLE,
+        INSERTION,
+        SELECTION
+    }
+
+    public void sort(SortType sortType) {
+        switch (sortType) {
+            case BUBBLE:
+                BubbleSort.sort(elementos, tamanho);
+                break;
+            case INSERTION:
+                InsertionSort.sort(elementos, tamanho);
+                break;
+            case SELECTION:
+                SelectionSort.sort(elementos, tamanho);
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de ordenação inválido!");
         }
 
-
     }
+
+}
